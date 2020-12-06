@@ -1,3 +1,5 @@
+# NOT COMPLETED
+
 # DCGAN-pytorch
 Implementation of Deep Convolutional Generative Adversarial Networks<br>
 Based on paper: Unsupervised representation learning with deep convolutional generative adversarial networks<br>
