@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import torch.nn as nn
 import numpy as np
 import pandas as pd
+import os
 
-
-def visualization_grid(image, size=(1,28,28), num=36):
+def visualization_grid(image, size=(1,64,64), num=36, step=0):
     '''
     image: torch.tensor shape like (num_of_image, channels, width, height)
     size: channels, width, height
@@ -18,6 +18,8 @@ def visualization_grid(image, size=(1,28,28), num=36):
     img = img.cpu().detach()
     grid = torchvision.utils.make_grid(img,nrow=6)
     plt.imshow(grid.permute(1,2,0).squeeze())
+    plt.title('Epoch {}'.format(step//485+1),fontdict = {'fontsize' : 80})
+    plt.savefig(os.path.join('./result',str(step).zfill(5)+'.png'))
     plt.show()
 
 def noise_maker(batch_size=128,z_dim=100,device='cpu'):
@@ -36,3 +38,6 @@ def weight_initialize(m):
     '''
     if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
         nn.init.normal_(m.weight, 0.0, 0.02)
+
+def make_result_dir(path='.'):
+    os.mkdir(path+'result')

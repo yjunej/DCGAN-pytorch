@@ -33,14 +33,14 @@ class DCGAN_Generator(nn.Module):
         return x
 
 
-class DCGAN_Discrimanator(nn.Module):
+class DCGAN_Discriminator(nn.Module):
     '''
     h_dim: first hidden layer dimension
     channels:  channels: data channels (RGB:3, GRAYSCALE: 1)
 
     '''
-    def __Init__(self, h_dim=128, channels =1):
-        super(DCGAN_Discrimanator, self).__init__()
+    def __init__(self, h_dim=128, channels =1):
+        super(DCGAN_Discriminator, self).__init__()
         self.conv0 = nn.Conv2d(in_channels=channels, out_channels=h_dim, kernel_size=4, stride=2, padding=1)
         self.bn0 = nn.BatchNorm2d(h_dim)
         self.conv1 = nn.Conv2d(in_channels=h_dim, out_channels=h_dim*2, kernel_size=4, stride=2, padding=1)
