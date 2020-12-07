@@ -15,7 +15,6 @@ https://arxiv.org/pdf/1511.06434.pdf
 # Development Environments
 
 # Results
-![3420](https://user-images.githubusercontent.com/61140071/101330635-30458d80-38b6-11eb-8c9b-4426426ff983.png =16x16)<br>
 <img src="https://user-images.githubusercontent.com/61140071/101330635-30458d80-38b6-11eb-8c9b-4426426ff983.png" width="480" height="480">
 
 # Reference
