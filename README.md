@@ -21,6 +21,9 @@ https://arxiv.org/pdf/1511.06434.pdf
 ## Generated image after 30 epoch training
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">
 
+## Interpolation
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="360" height="360">
+
 ## Generator Loss Tracking
 <img src="https://user-images.githubusercontent.com/61140071/101358054-a8737980-38dd-11eb-9932-a676d109b2d4.png" width="360" height="360">
 (loss is calculated by evaluating mean of Generator and Discriminator)
