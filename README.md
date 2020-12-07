@@ -15,7 +15,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 # Development Environments
 
 # Results
-Generated image by same noise during training
+## Generated image by same noise during training
 ![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/mnist_z_gen.gif)
 
 <img src="https://user-images.githubusercontent.com/61140071/101330635-30458d80-38b6-11eb-8c9b-4426426ff983.png" width="480" height="480">
