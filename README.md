@@ -18,5 +18,5 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 # Reference
 [1] Alec Radford & Luke Metz, Soumith Chintala.(2016). 'Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks' arXiv:1511.06434v2<br>
-[2] Ian J. Goodfellow et al. (2014).'Generative Adversarial Networks' arXiv:1406.2661v1<br<
+[2] Ian J. Goodfellow et al. (2014).'Generative Adversarial Networks' arXiv:1406.2661v1<br>
 [3] Martin Arjovsky et al. (2017). 'Wasserstein GAN' arXiv:1701.07875<br>
