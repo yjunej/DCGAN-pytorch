@@ -49,7 +49,7 @@ def train():
             mean_gen_loss = 0
             mean_dis_loss = 0
 
-            for x_real, label in tqdm(mnist_loader):
+            for x_real, _ in tqdm(mnist_loader):
                 step_per_epoch += 1
                 
                 x_real = x_real.to(device)
@@ -64,7 +64,7 @@ def train():
                 dis_loss_gen = criterion(dis_pred_gen, torch.zeros_like(dis_pred_gen))
 
                 dis_loss = (dis_loss_real + dis_loss_gen) / 2
-                mean_dis_loss += mean_dis_loss
+                mean_dis_loss += dis_loss
                 dis_loss.backward()
                 dis_optimizer.step()
 

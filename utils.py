@@ -7,8 +7,9 @@ import torch.nn as nn
 import numpy as np
 import pandas as pd
 import os
+import math 
 
-def visualization_grid(image, size=(1,64,64), num=36, step=0):
+def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None):
     '''
     image: torch.tensor shape like (num_of_image, channels, width, height)
     size: channels, width, height
@@ -16,11 +17,22 @@ def visualization_grid(image, size=(1,64,64), num=36, step=0):
     '''
     img = image[:num]
     img = img.cpu().detach()
-    grid = torchvision.utils.make_grid(img,nrow=6)
+    if nrow==None:
+        nrow = int(math.sqrt(num))
+    grid = torchvision.utils.make_grid(img,nrow=nrow)
     plt.imshow(grid.permute(1,2,0).squeeze())
-    plt.title('Epoch {}'.format(step//485+1),fontdict = {'fontsize' : 80})
-    plt.savefig(os.path.join('./result',str(step).zfill(5)+'.png'))
+    if save:
+        plt.title('Epoch {}'.format(step//485+1),fontdict = {'fontsize' : 80})
+        plt.savefig(os.path.join('./img',str(step).zfill(5)+'.png'))
     plt.show()
+
+
+def interpolate_noise(starts,end,num,device):
+    interpolate_matrix = np.linspace(starts[0],end,num)
+    for x in starts[1:]:
+        interpolate_matrix=np.concatenate([interpolate_matrix,np.linspace(x,end,num)],axis=0)
+   
+    return torch.tensor(interpolate_matrix,device=device)
 
 def noise_maker(batch_size=128,z_dim=100,device='cpu'):
     '''
