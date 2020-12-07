@@ -16,6 +16,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 # Results
 <img src="https://user-images.githubusercontent.com/61140071/101330635-30458d80-38b6-11eb-8c9b-4426426ff983.png" width="480" height="480">
+<img src="https://user-images.githubusercontent.com/61140071/101358054-a8737980-38dd-11eb-9932-a676d109b2d4.png" width="480" height="480">
 
 # Reference
 [1] Alec Radford & Luke Metz, Soumith Chintala.(2016). 'Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks' arXiv:1511.06434v2<br>
