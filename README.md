@@ -5,7 +5,8 @@ Implementation of Deep Convolutional Generative Adversarial Networks<br>
 Based on paper: Unsupervised representation learning with deep convolutional generative adversarial networks<br>
 
 # DCGAN Model Architecture
-
+![image](https://user-images.githubusercontent.com/61140071/101329973-69313280-38b5-11eb-876d-e88e3e8a47ad.png)
+https://arxiv.org/pdf/1511.06434.pdf
 # Install
 
 # Prerequisites
