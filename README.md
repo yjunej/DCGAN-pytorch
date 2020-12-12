@@ -1,5 +1,5 @@
 # NOT COMPLETED
-options under consideration: Wasserstein GAN, CelebA, Use new dataset, FID
+options under consideration: Wasserstein GAN, CelebA, Use new dataset, FID, update README
 # DCGAN-pytorch
 Implementation of Deep Convolutional Generative Adversarial Networks<br>
 Based on paper: Unsupervised representation learning with deep convolutional generative adversarial networks<br>
