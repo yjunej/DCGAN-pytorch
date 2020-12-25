@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import os
 import math 
+plt.rcParams["figure.figsize"] = (24,24)
 
 def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None):
     '''
@@ -23,7 +24,7 @@ def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None
     plt.imshow(grid.permute(1,2,0).squeeze())
     if save:
         plt.title('Epoch {}'.format(step//485+1),fontdict = {'fontsize' : 80})
-        plt.savefig(os.path.join('./img',str(step).zfill(5)+'.png'))
+        plt.savefig(os.path.join('./result',str(step).zfill(5)+'.png'))
     plt.show()
 
 
@@ -52,4 +53,4 @@ def weight_initialize(m):
         nn.init.normal_(m.weight, 0.0, 0.02)
 
 def make_result_dir(path='.'):
-    os.mkdir(path+'result')
+    os.mkdir(path+'/result')

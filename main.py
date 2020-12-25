@@ -2,21 +2,39 @@ from utils import *
 from models import DCGAN_Generator, DCGAN_Discriminator
 import argparse
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Deep Convolutional Generative Adversirial Networks pytorch Implementation based on the original research paper")
 
-parser.add_argument('--lr',type=float, default=0.0002)
-parser.add_argument('--batch_size',type=int,required=False, default=128)
-parser.add_argument('--hidden_dim',type=int,required=False, default=128)
+parser.add_argument('-lr',type=float, default=0.0002, help='Train Learning Rate')
+parser.add_argument('-dataset',type=str, default='MNIST', help='Dataset: MNIST, CelebA')
+parser.add_argument('-batch_size',type=int, default=128, help='Train Batch size')
+parser.add_argument('-hidden_dim',type=int, default=128, help='Train hidden channel dimension ')
+parser.add_argument('-z_dim',type=int, default=100, help='Noise Space Z dimention')
+parser.add_argument('-beta_1',type=float, default=0.5, help='Beta 1 for Adam Optimizer')
+parser.add_argument('-beta_2',type=float, default=0.999, help='Beta 2 for Adam Optimizer')
+parser.add_argument('-epochs',type=int, default=30, help='Numbers of Train Epochs')
+parser.add_argument('-optimizer',type=int, default='Adam', help='Select Optimizer: Adam, SGD')
 
+args = parser.parse_args()
 
-mnist_transform = torchvision.transforms.Compose([
-                                                  torchvision.transforms.
-                                                  torchvision.transforms.ToTensor(),
-                                                  torchvision.transforms.Normalize((.5),(.5))
-])
+if args.dataset == 'MNIST':
+    mnist_transform = torchvision.transforms.Compose([
+                                                    torchvision.transforms.Resize((64,64)),
+                                                    torchvision.transforms.ToTensor(),
+                                                    torchvision.transforms.Normalize((.5),(.5))
+    ])
 
-mnist = torchvision.datasets.MNIST('./data',download=True, transform=mnist_transform)
-mnist_loader = torch.utils.data.DataLoader(mnist,batch_size=128,shuffle=True,drop_last=True)
+    mnist = torchvision.datasets.MNIST('./data',download=True, transform=mnist_transform)
+    data_loader = torch.utils.data.DataLoader(mnist,batch_size=128,shuffle=True,drop_last=True)
+
+elif args.dataset == 'CelebA':
+    celeba_transform = torchvision.transforms.Compose([
+                                                    torchvision.transforms.Resize((64,64)),
+                                                    torchvision.transforms.ToTensor(),
+                                                    torchvision.transforms.Normalize((.5),(.5),(.5))
+    ])
+    celeba = torchvision.datasets.CelebA('./data',download=True, transform=celeba_transform)
+    data_loader = torch.utils.data.DataLoader(celeba,batch_size=128,shuffle=True,drop_last=True)
+
 
 criterion = nn.BCEWithLogitsLoss()
 learning_rate = 0.0002 #0.001
@@ -49,7 +67,7 @@ def train():
             mean_gen_loss = 0
             mean_dis_loss = 0
 
-            for x_real, _ in tqdm(mnist_loader):
+            for x_real, _ in tqdm(data_loader):
                 step_per_epoch += 1
                 
                 x_real = x_real.to(device)
