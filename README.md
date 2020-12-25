@@ -21,14 +21,19 @@ https://arxiv.org/pdf/1511.06434.pdf
 ![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/mnist_z_gen.gif)|![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celebA_gif.gif)
 
 ## Generated image after 30 epoch training
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">
+|MNIST|CelebA|
+:-------------------------:|:-------------------------:
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">|
 
 ## Interpolation
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="360" height="360">
+|MNIST|CelebA|
+:-------------------------:|:-------------------------:
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="360" height="360">|
 
 ## Generator Loss Tracking
-<img src="https://user-images.githubusercontent.com/61140071/101358054-a8737980-38dd-11eb-9932-a676d109b2d4.png" width="360" height="360">
-(loss is calculated by evaluating mean of Generator and Discriminator)
+|MNIST|CelebA|
+:-------------------------:|:-------------------------:
+<img src="https://user-images.githubusercontent.com/61140071/101358054-a8737980-38dd-11eb-9932-a676d109b2d4.png" width="360" height="360">(loss is calculated by evaluating mean of Generator and Discriminator)|
 
 # Reference
 [1] Alec Radford & Luke Metz, Soumith Chintala.(2016). 'Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks' arXiv:1511.06434v2<br>
