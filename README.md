@@ -16,10 +16,9 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 # Results
 ## Generated image by same noise during training
-### MNIST
-![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/mnist_z_gen.gif)
-### CelebA
-![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celebA_gif.gif)
+|MNIST|CelebA|
+:-------------------------:|:-------------------------:
+![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/mnist_z_gen.gif)|![Alt Text](https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celebA_gif.gif)
 
 ## Generated image after 30 epoch training
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">
