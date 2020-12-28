@@ -10,11 +10,19 @@ import os
 import math 
 plt.rcParams["figure.figsize"] = (24,24)
 
-def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None):
+def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None, epochs=0):
     '''
-    image: torch.tensor shape like (num_of_image, channels, width, height)
-    size: channels, width, height
-    num: number of display images
+    Show grid image
+
+    Inputs: 
+        image: torch.tensor shape like (num_of_image, channels, width, height)
+        size: channels, width, height
+        num: number of display images
+        step: batch step for file name
+        save: True if save results
+        nrow: number of grid row
+        epochs: current epochs for result image title
+    
     '''
     img = image[:num]
     img = img.cpu().detach()
@@ -23,12 +31,25 @@ def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None
     grid = torchvision.utils.make_grid(img,nrow=nrow)
     plt.imshow(grid.permute(1,2,0).squeeze())
     if save:
-        plt.title('Epoch {}'.format(step//485+1),fontdict = {'fontsize' : 80})
+        plt.title('Epoch {}'.format(epochs+1),fontdict = {'fontsize' : 80})
         plt.savefig(os.path.join('./result',str(step).zfill(5)+'.png'))
     plt.show()
 
 
 def interpolate_noise(starts,end,num,device):
+    '''
+    interpolate noise vectors from starts to end
+    
+    inputs: 
+        starts: noise vectors list
+        end: A noise vecotr
+        num: num of interpolation output
+        device: device for processing
+    
+    outputs:
+        interpolation torch tensor from each noise in starts to end noise
+    '''
+
     interpolate_matrix = np.linspace(starts[0],end,num)
     for x in starts[1:]:
         interpolate_matrix=np.concatenate([interpolate_matrix,np.linspace(x,end,num)],axis=0)
@@ -45,9 +66,11 @@ def noise_maker(batch_size=128,z_dim=100,device='cpu'):
 
 def weight_initialize(m):
     '''
-    m: pytorch Module
-
     All weights are initialized from a zero-centered Normal distribution with standard deviation 0.02
+
+    Inputs:
+        m: pytorch Module
+
     '''
     if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
         nn.init.normal_(m.weight, 0.0, 0.02)

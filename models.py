@@ -2,9 +2,15 @@ from utils import *
 
 class DCGAN_Generator(nn.Module):
     '''
-    z_dim: noise space dimension
-    h_dim: last hidden layer dimension
-    channels: data channels (RGB:3, GRAYSCALE: 1)
+    DCGAN Generator
+    Generate images from noise vecotrs
+    
+    Inputs:
+        z_dim: noise space dimension
+        h_dim: last hidden layer dimension
+        channels: data channels (RGB:3, GRAYSCALE: 1)
+    outputs:
+        x: generated images
 
     '''
     def __init__(self, z_dim=100, h_dim=128, channels=1):
@@ -35,8 +41,14 @@ class DCGAN_Generator(nn.Module):
 
 class DCGAN_Discriminator(nn.Module):
     '''
-    h_dim: first hidden layer dimension
-    channels:  channels: data channels (RGB:3, GRAYSCALE: 1)
+    DCGAN Discriminator
+    Binary classification model for discriminating real: not generated images
+
+    Inputs:
+        h_dim: first hidden layer dimension
+        channels:  channels: data channels (RGB:3, GRAYSCALE: 1)
+    outputs:
+        x: 2d shape outputs for BCE Logit Loss
 
     '''
     def __init__(self, h_dim=128, channels =1):

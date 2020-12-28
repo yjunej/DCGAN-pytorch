@@ -1,6 +1,8 @@
 from utils import *
 from models import DCGAN_Generator, DCGAN_Discriminator
 import argparse
+import warnings
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description="Deep Convolutional Generative Adversirial Networks pytorch Implementation based on the original research paper")
 
@@ -12,9 +14,18 @@ parser.add_argument('-z_dim',type=int, default=100, help='Noise Space Z dimentio
 parser.add_argument('-beta_1',type=float, default=0.5, help='Beta 1 for Adam Optimizer')
 parser.add_argument('-beta_2',type=float, default=0.999, help='Beta 2 for Adam Optimizer')
 parser.add_argument('-epochs',type=int, default=30, help='Numbers of Train Epochs')
-parser.add_argument('-optimizer',type=int, default='Adam', help='Select Optimizer: Adam, SGD')
+parser.add_argument('-optimizer',type=str, default='Adam', help='Select Optimizer: Adam, SGD, if SGD selected, beta parameters would be deactivated')
+parser.add_argument('-visual_batch_step', type=int, default=60, help='Visualizing batch interval for fixed z')
 
 args = parser.parse_args()
+
+criterion = nn.BCEWithLogitsLoss()
+learning_rate = args.lr #0.001
+beta = (args.beta_1, args.beta_2)
+z_dim = args.z_dim
+h_dim = args.hidden_dim
+epochs = args.epochs
+batch_size = args.batch_size
 
 if args.dataset == 'MNIST':
     mnist_transform = torchvision.transforms.Compose([
@@ -24,7 +35,8 @@ if args.dataset == 'MNIST':
     ])
 
     mnist = torchvision.datasets.MNIST('./data',download=True, transform=mnist_transform)
-    data_loader = torch.utils.data.DataLoader(mnist,batch_size=128,shuffle=True,drop_last=True)
+    data_loader = torch.utils.data.DataLoader(mnist,batch_size=batch_size,shuffle=True,drop_last=True)
+    channels = 1
 
 elif args.dataset == 'CelebA':
     celeba_transform = torchvision.transforms.Compose([
@@ -33,20 +45,32 @@ elif args.dataset == 'CelebA':
                                                     torchvision.transforms.Normalize((.5),(.5),(.5))
     ])
     celeba = torchvision.datasets.CelebA('./data',download=True, transform=celeba_transform)
-    data_loader = torch.utils.data.DataLoader(celeba,batch_size=128,shuffle=True,drop_last=True)
+    data_loader = torch.utils.data.DataLoader(celeba,batch_size=batch_size,shuffle=True,drop_last=True)
+    channels = 3
 
+else:
+    try:
+        custom_transform = torchvision.transfroms.Compose([
+            torchvision.transforms.Resize((64,64)),
+            torchvision.transforms.ToTensor(),
+            torchvision.transforms.Normalize((.5),(.5),(.5))
+        ])
+        channels = 3
+    except:
+        custom_transform = torchvision.transfroms.Compose([
+            torchvision.transforms.Resize((64,64)),
+            torchvision.transforms.ToTensor(),
+            torchvision.transforms.Normalize((.5),(.5))
+        ])
+        channels = 1
+    dataset = torchvision.dataset.ImageFolder(root=args.dataset, transform=custom_transform)
+    data_loader = torch.utils.data.DataLoader(dataset, batch_size = batch_size, shuffle=True, drop_last=True)
 
-criterion = nn.BCEWithLogitsLoss()
-learning_rate = 0.0002 #0.001
-beta = (0.5, 0.999)
-z_dim = 100
-epochs = 30
-batch_size = 128
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
 
-generator = DCGAN_Generator().to(device)
-discriminator = DCGAN_Discriminator().to(device)
+generator = DCGAN_Generator(z_dim=z_dim, h_dim=h_dim, channels=channels).to(device)
+discriminator = DCGAN_Discriminator(h_dim=h_dim, channels=channels).to(device)
 
 gen_optimizer = torch.optim.Adam(generator.parameters(),lr=learning_rate,betas=beta)
 dis_optimizer = torch.optim.Adam(discriminator.parameters(),lr=learning_rate,betas=beta)
@@ -60,7 +84,7 @@ def train():
     gen_loss_list = []
     dis_loss_list = []
     batch_count = 0
-    example_z = noise_maker(batch_size=36,z_dim=100,device=device)
+    example_z = noise_maker(batch_size=batch_size,z_dim=z_dim,device=device)
     for i in range(epochs):
 
             step_per_epoch = 0
@@ -107,4 +131,4 @@ def train():
             gen_loss_list.append(mean_gen_loss)
             dis_loss_list.append(mean_dis_loss)
 
-
+train()
