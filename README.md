@@ -23,12 +23,12 @@ https://arxiv.org/pdf/1511.06434.pdf
 ## Generated image after 30 epoch training
 |MNIST|CelebA|
 :-------------------------:|:-------------------------:
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_30epoch.JPG" width="360" height="360">
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="600" height="600">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_30epoch.JPG" width="600" height="600">
 
 ## Interpolation
 |MNIST|CelebA|
 :-------------------------:|:-------------------------:
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="360" height="360">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_interpolation.png" width="360" height="360"> 
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="600" height="600">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_interpolation.png" width="600" height="600"> 
 
 ## Generator Loss Tracking
 |MNIST|CelebA|
