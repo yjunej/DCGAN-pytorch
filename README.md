@@ -11,6 +11,32 @@ https://arxiv.org/pdf/1511.06434.pdf
 # Install
 
 # Prerequisites
+certifi==2020.12.5
+cffi==1.14.4
+cycler==0.10.0
+kiwisolver==1.3.0
+matplotlib==3.3.2
+mkl-fft==1.2.0
+mkl-random==1.1.0
+mkl-service==2.3.0
+numpy==1.19.2
+olefile==0.46
+pandas==1.1.5
+Pillow==8.0.1
+pip==20.3.3
+pycparser==2.20
+pyparsing==2.4.7
+python-dateutil==2.8.1
+pytz==2020.4
+setuptools==51.0.0.post20201207
+sip==4.19.13
+six==1.15.0
+torch==1.6.0
+torchvision==0.7.0
+tornado==6.1
+tqdm==4.54.1
+wheel==0.36.2
+wincertstore==0.2
 
 # Development Environments
 
