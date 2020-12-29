@@ -23,7 +23,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 ## Generated image after 30 epoch training
 |MNIST|CelebA|
 :-------------------------:|:-------------------------:
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/30epoch_celeba.png" width="360" height="360">
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="360" height="360">| 
 
 ## Interpolation
 |MNIST|CelebA|
