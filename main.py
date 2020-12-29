@@ -78,11 +78,12 @@ dis_optimizer = torch.optim.Adam(discriminator.parameters(),lr=learning_rate,bet
 generator = generator.apply(weight_initialize)
 discriminator = discriminator.apply(weight_initialize)
 
+gen_loss_list = []
+dis_loss_list = []
 
 def train():
     make_result_dir()
-    gen_loss_list = []
-    dis_loss_list = []
+    
     batch_count = 0
     example_z = noise_maker(batch_size=batch_size,z_dim=z_dim,device=device)
     for i in range(epochs):
@@ -122,7 +123,7 @@ def train():
 
                 if batch_count%60 == 0:
                     gen_example_z = generator(example_z)
-                    visualization_grid(gen_example_z,size=(1,64,64),num=36,step=batch_count)
+                    visualization_grid(gen_example_z,size=(1,64,64),num=36,step=batch_count,epochs=i)
             
                 batch_count += 1
 

@@ -41,20 +41,25 @@ def interpolate_noise(starts,end,num,device):
     interpolate noise vectors from starts to end
     
     inputs: 
-        starts: noise vectors list
-        end: A noise vecotr
+        starts: noise vectors list ([noise1, noise2], noise.shape=(100,1,1))
+        end: A noise vecotr (target_noise.shape=(100,1,1))
         num: num of interpolation output
         device: device for processing
     
     outputs:
         interpolation torch tensor from each noise in starts to end noise
     '''
-
-    interpolate_matrix = np.linspace(starts[0],end,num)
-    for x in starts[1:]:
-        interpolate_matrix=np.concatenate([interpolate_matrix,np.linspace(x,end,num)],axis=0)
+    s = []
+    
+    for sn in starts:
+        s.append(sn.cpu().detach())
+    e = end.cpu().detach()
+    interpolate_matrix = np.linspace(s[0],e,num)
+    for x in s[1:]:
+        interpolate_matrix=np.concatenate([interpolate_matrix,np.linspace(x,e,num)],axis=0)
    
     return torch.tensor(interpolate_matrix,device=device)
+
 
 def noise_maker(batch_size=128,z_dim=100,device='cpu'):
     '''
@@ -76,4 +81,7 @@ def weight_initialize(m):
         nn.init.normal_(m.weight, 0.0, 0.02)
 
 def make_result_dir(path='.'):
+    '''
+    Create directory for saving result images
+    '''
     os.mkdir(path+'/result')
