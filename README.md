@@ -9,8 +9,9 @@ Based on paper: Unsupervised representation learning with deep convolutional gen
 https://arxiv.org/pdf/1511.06434.pdf
 # Install & Usage
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gitclone.JPG">
-![image](https://user-images.githubusercontent.com/61140071/103275901-836bb580-4a08-11eb-8fc9-28dc09498092.JPG)
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/install_pip.JPG">
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/argparse_help.JPG">
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/deafault_arg.JPG">
 
 
 # Prerequisites
