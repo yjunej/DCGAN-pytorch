@@ -37,7 +37,7 @@ torchvision==0.7.0\
 tornado==6.1\
 tqdm==4.54.1\
 wheel==0.36.2\
-wincertstore==0.2\
+wincertstore==0.2
 
 
 
