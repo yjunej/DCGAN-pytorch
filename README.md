@@ -14,6 +14,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 # Prerequisites
 
+<sub><sup>
 certifi==2020.12.5\
 cffi==1.14.4\
 cycler==0.10.0\
@@ -40,7 +41,7 @@ tornado==6.1\
 tqdm==4.54.1\
 wheel==0.36.2\
 wincertstore==0.2
-
+</sub></sup>
 
 
 # Development Environments
