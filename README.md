@@ -59,9 +59,9 @@ Ubuntu 20.04.1 LTS
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gen_image.JPG" width="500" height="500">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_30epoch.JPG" width="500" height="500">
 
 ## Interpolation
-|MNIST|CelebA|
-:-------------------------:|:-------------------------:
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="500" height="500">| <img src="https://github.com/hectic97/DCGAN-pytorch/blob/main/examples/celeba_interpolation_denomalized.png" width="500" height="500"> 
+|MNIST|
+:-------------------------:
+|<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="500" height="500">| <img src="https://github.com/hectic97/DCGAN-pytorch/blob/main/examples/celeba_interpolation_denomalized.png" width="500" height="500"> 
 
 
 
