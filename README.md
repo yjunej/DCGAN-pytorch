@@ -11,10 +11,13 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 ### Clone repo
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gitclone.JPG">
+
 ### Install requirements
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/install_pip.JPG">
+
 ### Argparse 
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/argparse_help.JPG">
+
 ### Default Args
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/default_arg.JPG">
 
