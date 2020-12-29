@@ -30,10 +30,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 :-------------------------:|:-------------------------:
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="500" height="500">| <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/celeba_interpolation.png" width="500" height="500"> 
 
-## Generator Loss Tracking
-|MNIST|CelebA|
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/61140071/101358054-a8737980-38dd-11eb-9932-a676d109b2d4.png" width="500" height="500"><br>(loss is calculated by evaluating mean of Generator and Discriminator)| Not yet
+
 
 # Reference
 [1] Alec Radford & Luke Metz, Soumith Chintala.(2016). 'Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks' arXiv:1511.06434v2<br>
