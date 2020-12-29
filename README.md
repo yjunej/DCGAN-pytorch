@@ -11,7 +11,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/gitclone.JPG">
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/install_pip.JPG">
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/argparse_help.JPG">
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/deafault_arg.JPG">
+<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/default_arg.JPG">
 
 
 # Prerequisites
