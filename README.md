@@ -61,9 +61,9 @@ Ubuntu 20.04.1 LTS
 ## Interpolation
 |MNIST|
 :-------------------------:
-<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="800" height="800">
+|<img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/interpolate.png" width="800" height="800">|
 |CelebA|
-<img src="https://github.com/hectic97/DCGAN-pytorch/blob/main/examples/celeba_interpolation_denomalized.png" width="1100" height="800">
+|<img src="https://github.com/hectic97/DCGAN-pytorch/blob/main/examples/celeba_interpolation_denomalized.png" width="1100" height="800">|
 
 
 
