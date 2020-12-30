@@ -20,6 +20,7 @@ https://arxiv.org/pdf/1511.06434.pdf
 
 ### Default Args 
 <img src="https://github.com/hectic97/DCGAN-pytorch/raw/main/examples/default_arg.JPG">
+
 ``` python
 $ python main.py -lr=0.0002 -dataset=MNIST -batch_size=128 -hidden_dim=128 -z_dim=100 -beta_1=0.5 -beta_2=0.999 -epochs=30 -optimizer=Adam -visual_batch_step=60 -denormalize_img=True
 ```
