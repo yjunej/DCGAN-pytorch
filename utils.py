@@ -10,7 +10,7 @@ import os
 import math 
 plt.rcParams["figure.figsize"] = (24,24)
 
-def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None, epochs=0):
+def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None, epochs=0, denorm=False):
     '''
     Show grid image
 
@@ -25,6 +25,8 @@ def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None
     
     '''
     img = image[:num]
+    if denorm:
+        img = img*0.5 + 0.5
     img = img.cpu().detach()
     if nrow==None:
         nrow = int(math.sqrt(num))
@@ -33,7 +35,7 @@ def visualization_grid(image, size=(1,64,64), num=36,step=0, save=True,nrow=None
     if save:
         plt.title('Epoch {}'.format(epochs+1),fontdict = {'fontsize' : 80})
         plt.savefig(os.path.join('./result',str(step).zfill(5)+'.png'))
-    plt.show()
+    # plt.show()
 
 
 def interpolate_noise(starts,end,num,device):
@@ -84,4 +86,8 @@ def make_result_dir(path='.'):
     '''
     Create directory for saving result images
     '''
-    os.mkdir(path+'/result')
+    try:
+        os.mkdir(path+'/result')
+        print('Result folder has created!'.center(60,'='))
+    except:
+        print('Result folder already exists, skip creating directory'.center(60,'='))

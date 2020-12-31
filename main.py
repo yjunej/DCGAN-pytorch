@@ -16,17 +16,18 @@ parser.add_argument('-beta_2',type=float, default=0.999, help='Beta 2 for Adam O
 parser.add_argument('-epochs',type=int, default=30, help='Numbers of Train Epochs')
 parser.add_argument('-optimizer',type=str, default='Adam', help='Select Optimizer: Adam, SGD, if SGD selected, beta parameters would be deactivated')
 parser.add_argument('-visual_batch_step', type=int, default=60, help='Visualizing batch interval for fixed z')
-
+parser.add_argument('-denormalize_img',type=bool, default=True, help='image_tensor * 0.5 + 0.5 for clean visualization')
 args = parser.parse_args()
 
 criterion = nn.BCEWithLogitsLoss()
-learning_rate = args.lr #0.001
+learning_rate = args.lr 
 beta = (args.beta_1, args.beta_2)
 z_dim = args.z_dim
 h_dim = args.hidden_dim
 epochs = args.epochs
 batch_size = args.batch_size
 
+print('Downloading Dataset'.center(60,'='))
 if args.dataset == 'MNIST':
     mnist_transform = torchvision.transforms.Compose([
                                                     torchvision.transforms.Resize((64,64)),
@@ -72,27 +73,36 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
 generator = DCGAN_Generator(z_dim=z_dim, h_dim=h_dim, channels=channels).to(device)
 discriminator = DCGAN_Discriminator(h_dim=h_dim, channels=channels).to(device)
 
-gen_optimizer = torch.optim.Adam(generator.parameters(),lr=learning_rate,betas=beta)
-dis_optimizer = torch.optim.Adam(discriminator.parameters(),lr=learning_rate,betas=beta)
+if args.optimizer == 'Adam':
+    gen_optimizer = torch.optim.Adam(generator.parameters(),lr=learning_rate,betas=beta)
+    dis_optimizer = torch.optim.Adam(discriminator.parameters(),lr=learning_rate,betas=beta)
+
+else:
+    gen_optimizer = torch.optim.SGD(generator.parameters(),lr=learning_rate)
+    dis_optimizer = torch.optim.SGD(discriminator.parameters(),lr=learning_rate)
+
 
 generator = generator.apply(weight_initialize)
 discriminator = discriminator.apply(weight_initialize)
 
+
 gen_loss_list = []
 dis_loss_list = []
 
+
 def train():
+    print('Start Training'.center(60,'='))
     make_result_dir()
     
     batch_count = 0
     example_z = noise_maker(batch_size=batch_size,z_dim=z_dim,device=device)
-    for i in range(epochs):
+    for i in tqdm(range(epochs)):
 
             step_per_epoch = 0
             mean_gen_loss = 0
             mean_dis_loss = 0
 
-            for x_real, _ in tqdm(data_loader):
+            for x_real, _ in data_loader:
                 step_per_epoch += 1
                 
                 x_real = x_real.to(device)
@@ -121,7 +131,7 @@ def train():
                 gen_optimizer.step()
 
 
-                if batch_count%60 == 0:
+                if batch_count%args.visual_batch_step == 0:
                     gen_example_z = generator(example_z)
                     visualization_grid(gen_example_z,size=(1,64,64),num=36,step=batch_count,epochs=i)
             
@@ -133,3 +143,4 @@ def train():
             dis_loss_list.append(mean_dis_loss)
 
 train()
+print('Training Done, Check result folder'.center(60,'='))
