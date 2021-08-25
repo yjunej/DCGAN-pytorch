@@ -60,9 +60,9 @@ wincertstore==0.2
 
 # Development Environments
 
-Python 3.7.6
-pytorch 1.6.0
-NVIDIA RTX 2060
+Python 3.7.6\
+pytorch 1.6.0\
+NVIDIA RTX 2060\
 Ubuntu 20.04.1 LTS
 
 # Results
